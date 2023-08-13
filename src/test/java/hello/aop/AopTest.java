@@ -3,6 +3,7 @@ package hello.aop;
 import hello.aop.order.OrderRepository;
 import hello.aop.order.OrderService;
 import hello.aop.order.aop.AspectV1;
+import hello.aop.order.aop.AspectV2;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,8 @@ import org.springframework.context.annotation.Import;
 
 @Slf4j
 @SpringBootTest
-@Import(AspectV1.class) // 설정파일 추가 외에도 스프링 Bean을 등록하는데 사용하는 어노테이션
+//@Import(AspectV1.class) // 설정파일 추가 외에도 스프링 Bean을 등록하는데 사용하는 어노테이션
+@Import(AspectV2.class)
 public class AopTest {
 
     @Autowired
