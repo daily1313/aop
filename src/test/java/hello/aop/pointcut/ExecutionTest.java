@@ -90,4 +90,18 @@ public class ExecutionTest {
         pointcut.setExpression("execution(* hello.aop..*.*(..))");
         assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
     }
+
+    @Test
+    void typeExactMatch() {
+        // public java.lang.String hello.aop.member.MemberServiceImpl.hello(java.lang.String)
+        pointcut.setExpression("execution(* hello.aop.member.MemberServiceImpl.*(..))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
+
+    @Test
+    void typeExactSuperType() {
+        // public java.lang.String hello.aop.member.MemberServiceImpl.hello(java.lang.String)
+        pointcut.setExpression("execution(* hello.aop.member.MemberService.*(..))");
+        assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
+    }
 }
